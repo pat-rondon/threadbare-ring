@@ -5,8 +5,8 @@ use <MCAD/regular_shapes.scad>
 finger_radius = 9.16;
 ring_radius = finger_radius * 1.25;
 
-bolt_radius = 0.82 * ring_radius;
-thread_radius = 1.02 * bolt_radius;
+bolt_radius = 0.85 * ring_radius;
+thread_radius = 1.0 * bolt_radius;
 
 ring_height = finger_radius * 0.6;
 inset_height = 0.2 * ring_height;
@@ -49,11 +49,11 @@ module bolt() {
 }
 
 module thread_base() {
-  linear_extrude(height = ring_height,
-                 twist = -90,
+  linear_extrude(height = ring_height - nut_height,
+                 twist = -45,
                  center = true,
-                 slices = 20) {
-    translate(v = [0, thread_radius, 0]) square(0.5, center = true);
+                 slices = 10) {
+    translate(v = [0, thread_radius, 0]) square(0.8, center = true);
   }
 }
 
